@@ -1,4 +1,4 @@
-This is my first experiance in machine learning.
+This is my first experience in machine learning.
 
 This program can recognize number 5 that presented as a sequence of zeros and ones.
 

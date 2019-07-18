@@ -7,7 +7,7 @@ bias = np.random.randn()
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-
+# Derivation of sigmoid function
 def sigmoid_p(x):
     return sigmoid(x) * (1 - sigmoid(x))
 
@@ -38,7 +38,6 @@ colors = ["blue", "red"]
 
 weight = [np.random.rand() for i in range(2)]
 
-
 source = open("data.txt", "r")
 
 data = []
@@ -58,16 +57,15 @@ for point in flowers:
 
 # Learning
 for i in range(1000):
-    costs = []
-    learning_rate = 0.1
+    learning_rate = 0.1  # May be different
     for flower in flowers:
         if flower.color == "red":
             target = 1
         else:
             target = 0
         z = flower.length * weight[0] + flower.width * weight[1] + bias
-        model = flower.act_func()
-        cost = np.square(model - target)
+        model = flower.act_func()  # Prediction using NN
+        cost = np.square(model - target) # An error
 
         dcost_dz = 2 * (model - target) * sigmoid_p(z)  # Derivative of cost function
 
@@ -75,10 +73,12 @@ for i in range(1000):
         dz_dw2 = flower.width
         dz_db = 1
 
+        # Partial derivatives of the cost function (an error)
         dcost_dw1 = dcost_dz * dz_dw1
         dcost_dw2 = dcost_dz * dz_dw2
         dcost_db = dcost_dz * dz_db
 
+        # Alteration of the NN's parameters to decrease an error
         weight[0] -= learning_rate * dcost_dw1
         weight[1] -= learning_rate * dcost_dw2
         bias -= learning_rate * dcost_db
@@ -94,6 +94,7 @@ for f in flowers:
 
 print()
 
+# Testing the NN with random sizes and presenting it
 test = []
 
 for i in range(25):

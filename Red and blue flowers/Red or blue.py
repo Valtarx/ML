@@ -7,7 +7,7 @@ bias = np.random.randn()
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-# Derivation of sigmoid function
+# Derivative of sigmoid function
 def sigmoid_p(x):
     return sigmoid(x) * (1 - sigmoid(x))
 
